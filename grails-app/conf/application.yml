@@ -18,7 +18,6 @@ grails:
     assets:
         angular:
             moduleNameBase: 'five15'
-            includePathInName: true
     mime:
         disable:
             accept:

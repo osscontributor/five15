@@ -1,15 +1,19 @@
 (function(){
-  'use strict';
-  
-  var app = angular.module('five15.login');
-  
-  app.controller('LoginController', function($scope){
-    $scope.doLogin = function doLogin(){
-      $scope.error = 'I haven\'t added the login logic yet.';
-    };
+	'use strict';
+
+	function LoginController() {
+		var vm = this;
+
+		vm.doLogin = function doLogin(){
+			vm.error = 'I haven\'t added the login logic yet.';
+		};
     
-    $scope.clearError = function clearError(){
-      $scope.error = '';
-    };
-  });
+		vm.clearError = function clearError(){
+			vm.error = '';
+		};
+  }
+  
+	angular.module('five15.login')
+		.controller('LoginController', LoginController);
+
 })();

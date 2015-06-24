@@ -12,6 +12,7 @@
       .state('login', {
         url: '/login',
         controller: 'LoginController',
+		controllerAs: 'vm',
         templateUrl: '/login/login.htm'
       });
   });

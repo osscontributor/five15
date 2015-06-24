@@ -1,20 +1,20 @@
 //= require login/module
 
-(function(){
-  'use strict';
+(function () {
+    'use strict';
 
-  var app = angular.module('five15', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'five15.login']);
-  
-  app.config(function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('/login');
-    
-    $stateProvider
-      .state('login', {
-        url: '/login',
-        controller: 'LoginController',
-		controllerAs: 'vm',
-        templateUrl: '/login/login.htm'
-      });
-  });
+    var app = angular.module('five15', ['ui.router', 'ui.bootstrap', 'ngAnimate', 'five15.login']);
+
+    app.config(function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/login');
+
+        $stateProvider
+            .state('login', {
+                url: '/login',
+                controller: 'LoginController',
+                controllerAs: 'vm',
+                templateUrl: '/login/login.htm'
+            });
+    });
 
 })();

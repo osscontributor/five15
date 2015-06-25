@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('five15.login')
+    angular.module('five15.session')
         .controller('LoginController', LoginController);
     
     function LoginController() {

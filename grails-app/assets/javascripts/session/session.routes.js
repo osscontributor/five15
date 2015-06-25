@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('five15.login')
+        .module('five15.session')
         .config(configureRoutes);
 
     configureRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
@@ -15,7 +15,7 @@
                 url: '/login',
                 controller: 'LoginController',
                 controllerAs: 'vm',
-                templateUrl: '/login/login.htm'
+                templateUrl: '/session/login.htm'
             });
     }
 })();

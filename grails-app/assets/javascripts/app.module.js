@@ -1,3 +1,3 @@
-//= require login/login.module
+//= require session/session.module
 
-angular.module('five15', ['five15.login']);
+angular.module('five15', ['five15.session']);

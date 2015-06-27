@@ -4,19 +4,34 @@
     angular.module('five15.session')
         .controller('LoginController', LoginController);
     
-    function LoginController() {
+    LoginController.$inject = ['$state', 'profileService'];
+    
+    function LoginController($state, profileService) {
         var vm = this;
 
         vm.clearError = clearError;
         vm.doLogin = doLogin;
         vm.error = '';
         
+        vm.userId = '';
+        vm.password = '';
+        
         function clearError() {
             vm.error = '';
         }
         
         function doLogin() {
-            vm.error = 'I haven\'t added the login logic yet.';
+            profileService
+                .retrieve(vm.userId, vm.password)
+                .then(goToReport, badLogin);
+        }
+        
+        function goToReport () {
+            $state.go('report');
+        }
+        
+        function badLogin () {
+            vm.error = 'Invalid credentials';
         }
     }
 })();

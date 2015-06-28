@@ -8,8 +8,8 @@ buildscript {
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
-        classpath 'com.bertramlabs.plugins:asset-pipeline-gradle:2.1.1'
-        classpath "com.craigburke:js-closure-wrap-asset-pipeline:1.0.0"
+        classpath 'com.bertramlabs.plugins:asset-pipeline-gradle:2.3.7'
+        classpath "com.craigburke:js-closure-wrap-asset-pipeline:1.1.0"
         classpath "com.craigburke.angular:angular-template-asset-pipeline:2.2.0"
         classpath "com.craigburke.angular:angular-annotate-asset-pipeline:2.1.0"
     }
@@ -72,6 +72,8 @@ dependencies {
     runtime "org.grails.plugins:asset-pipeline"
     runtime "com.craigburke.angular:angular-template-asset-pipeline:2.2.0"
     runtime "com.craigburke.angular:angular-annotate-asset-pipeline:2.1.0"
+    runtime "com.craigburke:js-closure-wrap-asset-pipeline:1.1.0"
+
     runtime "org.grails.plugins:scaffolding"
 
     testCompile "org.grails:grails-plugin-testing"

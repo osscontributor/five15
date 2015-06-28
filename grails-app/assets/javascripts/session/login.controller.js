@@ -1,37 +1,34 @@
-(function () {
-    'use strict';
+//= wrapped
+'use strict';
 
-    angular.module('five15.session')
-        .controller('LoginController', LoginController);
-    
-    LoginController.$inject = ['$state', 'profileService'];
-    
-    function LoginController($state, profileService) {
-        var vm = this;
+angular.module('five15.session')
+    .controller('LoginController', LoginController);
 
-        vm.clearError = clearError;
-        vm.doLogin = doLogin;
+function LoginController($state, profileService) {
+    var vm = this;
+
+    vm.clearError = clearError;
+    vm.doLogin = doLogin;
+    vm.error = '';
+
+    vm.userId = '';
+    vm.password = '';
+
+    function clearError() {
         vm.error = '';
-        
-        vm.userId = '';
-        vm.password = '';
-        
-        function clearError() {
-            vm.error = '';
-        }
-        
-        function doLogin() {
-            profileService
-                .retrieve(vm.userId, vm.password)
-                .then(goToReport, badLogin);
-        }
-        
-        function goToReport () {
-            $state.go('report');
-        }
-        
-        function badLogin () {
-            vm.error = 'Invalid credentials';
-        }
     }
-})();
+
+    function doLogin() {
+        profileService
+            .retrieve(vm.userId, vm.password)
+            .then(goToReport, badLogin);
+    }
+
+    function goToReport() {
+        $state.go('report');
+    }
+
+    function badLogin() {
+        vm.error = 'Invalid credentials';
+    }
+}

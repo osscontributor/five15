@@ -2,7 +2,7 @@
 angular.module('five15.session')
     .factory('profileService', profileServiceFactory);
 
-function profileServiceFactory($q, roles, userData) {
+function profileServiceFactory($q, roles, userData, $http) {
     var profileService = {
         retrieve: retrieve
     };
@@ -24,6 +24,17 @@ function profileServiceFactory($q, roles, userData) {
 
     return profileService;
 
+//    function retrieve(userId, password) {
+//        
+//        function extractDataFromResult(result) {
+//            userData.populate(userId, password, result.data.fullName, result.data.roles);
+//            
+//            return userData;
+//        }
+//        
+//        return $http.get('/profiles/' + userId).then(extractDataFromResult);
+//    }
+
     function retrieve(userId, password) {
         var deferred = $q.defer();
 
@@ -44,6 +55,4 @@ function profileServiceFactory($q, roles, userData) {
 
         return deferred.promise;
     }
-
-
 }

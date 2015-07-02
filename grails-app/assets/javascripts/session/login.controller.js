@@ -28,7 +28,7 @@ function LoginController($state, profileService) {
         $state.go('report');
     }
 
-    function badLogin() {
+    function badLogin(something) {
         vm.error = 'Invalid credentials';
     }
 }

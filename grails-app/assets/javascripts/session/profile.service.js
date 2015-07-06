@@ -24,35 +24,34 @@ function profileServiceFactory($q, roles, userData, $http) {
 
     return profileService;
 
-//    function retrieve(userId, password) {
-//        
-//        function extractDataFromResult(result) {
-//            userData.populate(userId, password, result.data.fullName, result.data.roles);
-//            
-//            return userData;
-//        }
-//        
-//        return $http.get('/profiles/' + userId).then(extractDataFromResult);
-//    }
-
     function retrieve(userId, password) {
-        var deferred = $q.defer();
 
-        var userProfile = tempUserMap[userId + ':' + password];
+        function extractDataFromResult(result) {
+            userData.populate(userId, password, result.data.fullName, result.data.roles);
 
-        if (userProfile) {
-            userData.userId = userId;
-            userData.password = password;
-            userData.fullName = userProfile.fullName;
-            userData.roles = userProfile.roles;
-
-            deferred.resolve(userData);
-        } else {
-            userData.clear();
-
-            deferred.reject();
+            return userData;
         }
-
-        return deferred.promise;
+        return $http.get('/profiles/' + userId + '.json').then(extractDataFromResult);
     }
+
+    //function retrieve(userId, password) {
+    //    var deferred = $q.defer();
+    //
+    //    var userProfile = tempUserMap[userId + ':' + password];
+    //
+    //    if (userProfile) {
+    //        userData.userId = userId;
+    //        userData.password = password;
+    //        userData.fullName = userProfile.fullName;
+    //        userData.roles = userProfile.roles;
+    //
+    //        deferred.resolve(userData);
+    //    } else {
+    //        userData.clear();
+    //
+    //        deferred.reject();
+    //    }
+    //
+    //    return deferred.promise;
+    //}
 }

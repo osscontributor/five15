@@ -13,19 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class UrlMappings {
+package five15.auth
 
-    static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
+import org.springframework.http.HttpStatus
+
+class ProfileController {
+
+    def profileService
+
+    def authenticate(String username) {
+        def profileData = profileService.getProfileInformation(username)
+        if(!profileData) {
+            response.sendError HttpStatus.FORBIDDEN.value()
+            return
         }
-
-        "/profiles/$username(.$format)?"(controller: 'profile', action: 'authenticate')
-
-        "/"(view:"/index")
-        "500"(view:'/error')
-        "404"(view:'/notFound')
+        respond profileData
     }
 }

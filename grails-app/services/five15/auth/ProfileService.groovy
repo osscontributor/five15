@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class UrlMappings {
+package five15.auth
 
-    static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
+class ProfileService {
 
-        "/profiles/$username(.$format)?"(controller: 'profile', action: 'authenticate')
+    static transactional = false
 
-        "/"(view:"/index")
-        "500"(view:'/error')
-        "404"(view:'/notFound')
+    protected profileData = [
+        user:    [fullName: 'Jack User',    roles: ['USER']],
+        manager: [fullName: 'Jilllll Manager', roles: ['USER', 'MANAGER']],
+        admin:   [fullName: 'Irene Admin',  roles: ['USER', 'ADMIN']]
+    ]
+
+    def getProfileInformation(String username) {
+        profileData[username]
     }
 }

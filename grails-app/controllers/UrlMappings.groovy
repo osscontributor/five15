@@ -22,7 +22,7 @@ class UrlMappings {
             }
         }
 
-        "/profiles/$username(.$format)?"(controller: 'profile', action: 'authenticate')
+        "/profiles/$username(.$format)"(controller: 'profile', action: 'authenticate')
 
         "/"(view:"/index")
         "500"(view:'/error')

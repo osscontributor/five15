@@ -2,7 +2,9 @@
     <div class="row">
         <span>New Report for {{vm.fullName}}</span>
     </div>
-    
+    <ul>
+      <li ng-repeat="proj in vm.projects">{{proj}}</li>
+    </ul>
     <div class="row">
         <a ui-sref="login">Login as someone else</a>    
     </div>

@@ -12,11 +12,6 @@ function projectServiceFactory(roles, userData, $http, $q) {
     return projectService;
 
     function retrieve(userId) {
-        var deferred = $q.defer();
-        
-        deferred.resolve(['Project 1', 'project 2']);
-        
-        return deferred.promise;
-        
+        return $http.get('/projects/' + userId + '.json').then(function(result){return result.data;});
     }
 }

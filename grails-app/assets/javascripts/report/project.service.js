@@ -12,6 +12,6 @@ function projectServiceFactory(roles, userData, $http, $q) {
     return projectService;
 
     function retrieve(userId) {
-        return $http.get('/projects/' + userId + '.json').then(function(result){return result.data;});
+        return $http.get('/projects.json?userId=' + userId).then(function(result){return result.data;});
     }
 }

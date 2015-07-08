@@ -38,6 +38,8 @@ ext {
     jasmineDependencies = ['karma', 'karma-jasmine@2_0', 'karma-phantomjs-launcher', 'phantomjs']
     karmaExec = file('node_modules/karma/bin/karma')
     karmaConfig = file('grails-app/conf/karma.conf.js')
+    bowerInstallerExec = file('node_modules/bower-installer/bower-installer')
+    assetLibsDir = file('grails-app/assets/libs/bower')
 }
 
 assets {
@@ -57,12 +59,12 @@ node {
     workDir = file("${project.buildDir}/node")
 }
 
-task installBower(type: NpmTask) {
+task installBowerInstaller(type: NpmTask) {
     args = ['install', 'bower-installer', '--silent']
 }
 
-task installAssetLibs(type: NodeTask, dependsOn: installBower) {
-    script = file('node_modules/bower-installer/bower-installer')
+task installAssetLibs(type: NodeTask, dependsOn: installBowerInstaller) {
+    script = bowerInstallerExec
 }
 
 task installJasmine(type: NpmTask) {
@@ -71,11 +73,11 @@ task installJasmine(type: NpmTask) {
 
 task jasmineRun(type: NodeTask, dependsOn: installJasmine) {
     script = karmaExec
-    args = ['start', project.karmaConfig, '--single-run']
+    args = ['start', karmaConfig.absolutePath, '--single-run']
 }
 
 clean {
-    delete "grails-app/assets/libs/bower"
+    delete assetLibsDir
 }
 
 repositories {

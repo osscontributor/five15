@@ -4,7 +4,7 @@
 angular.module('five15.report')
     .factory('projectService', projectServiceFactory);
 
-function projectServiceFactory (roles, userData, $http, $q) {
+function projectServiceFactory (roles, userData, $http, $log) {
     var projectService = {
         retrieveForUser: retrieveForUser
     };
@@ -17,6 +17,11 @@ function projectServiceFactory (roles, userData, $http, $q) {
             return result.data;
         }
         
-        return $http.get('/projects.json?userId=' + userId).then(extractData);
+        function noProjects (result) {
+            $log.debug("Unable to retrieve projects for " + userId + " : " + result.status + " : " + result.statusText);
+            return [];
+        }
+        
+        return $http.get('/projects.json?userId=' + userId).then(extractData, noProjects);
     }
 }

@@ -43,4 +43,3 @@ function userDataFactory() {
         userData.roles = Array.isArray(roles) ? roles : [];
     }
 }
-    

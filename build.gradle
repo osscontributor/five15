@@ -56,19 +56,22 @@ node {
     npmVersion = '2.6.0'
     distBaseUrl = 'http://nodejs.org/dist'
     download = true
-    workDir = file("${project.buildDir}/node")
 }
 
 task installBowerInstaller(type: NpmTask) {
     args = ['install', 'bower-installer', '--silent']
+    outputs.dir 'node_modules/bower-installer'
 }
 
 task installAssetLibs(type: NodeTask, dependsOn: installBowerInstaller) {
     script = bowerInstallerExec
+    inputs.file 'bower.json'
+    outputs.dir assetLibsDir
 }
 
 task installJasmine(type: NpmTask) {
     args = ['install'] + jasmineDependencies + ['--silent']
+    outputs.files jasmineDependencies.collect { "node_modules/${it.split('@')[0]}" }
 }
 
 task jasmineRun(type: NodeTask, dependsOn: installJasmine) {
@@ -77,6 +80,8 @@ task jasmineRun(type: NodeTask, dependsOn: installJasmine) {
 }
 
 clean {
+    delete 'node_modules'
+    delete 'bower_components'
     delete assetLibsDir
 }
 

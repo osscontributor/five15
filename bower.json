@@ -2,7 +2,8 @@
   "name": "five15",
   "version": "0.0.0",
   "authors": [
-    "Jason Schindler <jschind@gmail.com>"
+    "Jason Schindler <jschind@gmail.com>",
+    "Craig Burke <craig@craigburke.com>"
   ],
   "license": "MIT",
   "ignore": [
@@ -19,5 +20,11 @@
     "ui-router": "0.2.x",
     "bootstrap": "3.3.x",
     "animate.css": "3.3.x"
+  },
+  "install": {
+      "path" : "grails-app/assets/libs/bower",
+      "sources": {
+        "bootstrap": [ "bower_components/bootstrap/dist/css/bootstrap.min.css"  ]
+      }
   }
 }

@@ -42,9 +42,7 @@ assets {
     minifyJs = true
     minifyCss = true
     configOptions = [
-        angular : [
-            moduleNameBase: 'five15'
-        ]
+            angular: [moduleNameBase: 'five15']
     ]
 }
 
@@ -53,13 +51,26 @@ node {
     npmVersion = '2.6.0'
     distBaseUrl = 'http://nodejs.org/dist'
     download = true
-    workDir = file("${project.buildDir}/nodejs")
-    nodeModulesDir = file("${project.projectDir}")
+    workDir = file("${project.buildDir}/node")
 }
 
+task installBower(type: NpmTask) {
+    args = ['install', 'bower-installer', '--silent']
+}
+
+task installAssetLibs(type: NodeTask, dependsOn: installBower) {
+    script = file('node_modules/bower-installer/bower-installer')
+}
+
+run.dependsOn installAssetLibs
+assetCompile.dependsOn installAssetLibs
+
 task installJasmine(type: NpmTask) {
-    outputs.dir node.nodeModulesDir
     args = ['install'] + jasmineDependencies + ['--silent']
+}
+
+clean {
+    delete "grails-app/assets/libs/bower"
 }
 
 repositories {

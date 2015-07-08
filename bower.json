@@ -25,6 +25,7 @@
       "path" : "grails-app/assets/libs/bower",
       "sources": {
         "bootstrap": [ "bower_components/bootstrap/dist/css/bootstrap.min.css"  ]
-      }
+      },
+      "ignore": ["jquery"]
   }
 }

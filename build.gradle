@@ -36,6 +36,8 @@ ext {
     grailsVersion = project.grailsVersion
     gradleWrapperVersion = project.gradleWrapperVersion
     jasmineDependencies = ['karma', 'karma-jasmine@2_0', 'karma-phantomjs-launcher', 'phantomjs']
+    karmaExec = file('node_modules/karma/bin/karma')
+    karmaConfig = file('grails-app/conf/karma.conf.js')
 }
 
 assets {
@@ -44,6 +46,7 @@ assets {
     configOptions = [
             angular: [moduleNameBase: 'five15']
     ]
+    excludes = ['**/*.spec.js']
 }
 
 node {
@@ -62,11 +65,13 @@ task installAssetLibs(type: NodeTask, dependsOn: installBower) {
     script = file('node_modules/bower-installer/bower-installer')
 }
 
-run.dependsOn installAssetLibs
-assetCompile.dependsOn installAssetLibs
-
 task installJasmine(type: NpmTask) {
     args = ['install'] + jasmineDependencies + ['--silent']
+}
+
+task jasmineRun(type: NodeTask, dependsOn: installJasmine) {
+    script = karmaExec
+    args = ['start', project.karmaConfig, '--single-run']
 }
 
 clean {
@@ -116,3 +121,8 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
+
+run.dependsOn installAssetLibs
+assetCompile.dependsOn installAssetLibs
+
+test.dependsOn jasmineRun

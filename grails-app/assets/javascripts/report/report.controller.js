@@ -4,14 +4,19 @@
 angular.module('five15.report')
     .controller('ReportController', ReportController);
 
-function ReportController(userData, projectService) {
+ReportController.resolve = {
+    userProjects: resolveUserProjects
+};
+
+function ReportController(userData, userProjects) {
     var vm = this;
 
-    vm.projects = [];
+    vm.projects = userProjects;
     
     vm.fullName = userData.fullName;
-    
-    projectService.retrieve(userData.userId).then(function(projects){
-      vm.projects = projects;
-    });
 }
+
+function resolveUserProjects (projectService, userData) {
+    return projectService.retrieveForUser(userData.userId);
+}
+

@@ -1,17 +1,22 @@
 //= wrapped
 'use strict';
 
-angular.module('five15.session')
+angular.module('five15.report')
     .factory('projectService', projectServiceFactory);
 
-function projectServiceFactory(roles, userData, $http, $q) {
+function projectServiceFactory (roles, userData, $http, $q) {
     var projectService = {
-        retrieve: retrieve
+        retrieveForUser: retrieveForUser
     };
 
     return projectService;
 
-    function retrieve(userId) {
-        return $http.get('/projects.json?userId=' + userId).then(function(result){return result.data;});
+    function retrieveForUser (userId) {
+        
+        function extractData (result) {
+            return result.data;
+        }
+        
+        return $http.get('/projects.json?userId=' + userId).then(extractData);
     }
 }

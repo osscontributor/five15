@@ -14,6 +14,7 @@ function configureRoutes($stateProvider, roles) {
             templateUrl: '/report/report.htm',
             data: {
                 requiredRoles: [roles.USER]
-            }
+            },
+            resolve: ReportController.resolve
         });
 }

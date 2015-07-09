@@ -79,6 +79,11 @@ task jasmineRun(type: NodeTask, dependsOn: installJasmine) {
     args = ['start', karmaConfig.absolutePath, '--single-run']
 }
 
+task jasmineWatch(type: NodeTask, dependsOn: installJasmine) {
+    script = karmaExec
+    args = ['start', karmaConfig.absolutePath]
+}
+
 clean {
     delete 'node_modules'
     delete 'bower_components'

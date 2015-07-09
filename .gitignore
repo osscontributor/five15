@@ -5,3 +5,4 @@ build
 classes
 node_modules
 bower_components
+grails-app/assets/libs/bower

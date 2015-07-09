@@ -39,6 +39,7 @@ ext {
     karmaExec = file('node_modules/karma/bin/karma')
     karmaConfig = file('grails-app/conf/karma.conf.js')
     bowerInstallerExec = file('node_modules/bower-installer/bower-installer')
+    bowerExec = file('node_modules/bower-installer/node_modules/bower/bin/bower')
     assetLibsDir = file('grails-app/assets/libs/bower')
 }
 
@@ -82,6 +83,11 @@ task jasmineRun(type: NodeTask, dependsOn: installJasmine) {
 task jasmineWatch(type: NodeTask, dependsOn: installJasmine) {
     script = karmaExec
     args = ['start', karmaConfig.absolutePath]
+}
+
+task cleanBowerCache(type: NodeTask, dependsOn: installBowerInstaller) {
+    script = bowerExec
+    args = ['cache', 'clean']
 }
 
 clean {

@@ -8,12 +8,10 @@ ReportController.resolve = {
     userProjects: resolveUserProjects
 };
 
-function ReportController(userData, userProjects) {
+function ReportController(authService, userProjects) {
     var vm = this;
-
     vm.projects = userProjects;
-    
-    vm.fullName = userData.fullName;
+    vm.fullName = authService.getCurrentUser().fullName;
 }
 
 function resolveUserProjects (projectService, authService) {

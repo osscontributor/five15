@@ -4,15 +4,10 @@
 angular.module('five15.report')
     .factory('projectService', projectServiceFactory);
 
-function projectServiceFactory (roles, userData, $http, $log) {
-    var projectService = {
-        retrieveForUser: retrieveForUser
-    };
+function projectServiceFactory ($http, $log) {
+    var projectService = {};
 
-    return projectService;
-
-    function retrieveForUser (userId) {
-        
+    projectService.retrieveForUser = function(userId) {
         function extractData (result) {
             return result.data;
         }
@@ -24,4 +19,7 @@ function projectServiceFactory (roles, userData, $http, $log) {
         
         return $http.get('/projects.json?userId=' + userId).then(extractData, noProjects);
     }
+
+    return projectService;
+
 }

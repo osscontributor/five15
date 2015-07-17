@@ -16,7 +16,8 @@ function ReportController(userData, userProjects) {
     vm.fullName = userData.fullName;
 }
 
-function resolveUserProjects (projectService, userData) {
-    return projectService.retrieveForUser(userData.userId);
+function resolveUserProjects (projectService, authService) {
+    var userId = authService.getCurrentUser().id;
+    return projectService.retrieveForUser(userId);
 }
 

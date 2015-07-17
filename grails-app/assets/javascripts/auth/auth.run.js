@@ -1,10 +1,8 @@
 //= wrapped
 'use strict';
 
-angular.module('five15.session')
+angular.module('five15.auth')
     .run(initializeStateChangeListener);
-
-initializeStateChangeListener.$inject = ['authStateChangeManager'];
 
 function initializeStateChangeListener(authStateChangeManager) {
     authStateChangeManager.initialize();

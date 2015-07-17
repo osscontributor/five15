@@ -1,4 +1,0 @@
-//= require_self
-//= require_tree .
-
-angular.module('five15.session', ['five15.core']);

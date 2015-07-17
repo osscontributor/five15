@@ -1,8 +1,7 @@
 //= wrapped
 'use strict';
 
-angular
-    .module('five15.session')
+angular.module('five15.auth')
     .config(configureRoutes);
 
 function configureRoutes($stateProvider, $urlRouterProvider) {
@@ -13,7 +12,7 @@ function configureRoutes($stateProvider, $urlRouterProvider) {
             url: '/login',
             controller: 'LoginController',
             controllerAs: 'vm',
-            templateUrl: '/session/login.htm'
+            templateUrl: '/auth/login.htm'
         });
 }
 

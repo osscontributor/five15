@@ -1,4 +1,4 @@
-angular.module('five15.session')
+angular.module('five15.core')
     .constant('roles', {
         ADMIN: 'ADMIN',
         MANAGER: 'MANAGER',

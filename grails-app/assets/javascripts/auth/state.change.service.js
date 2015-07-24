@@ -12,9 +12,8 @@ function authStateChangeManagerFactory($rootScope, authService, $log, $state) {
     }
 
     function checkRoles(event, toState) {
-        
         if (toState.data && toState.data.requiredRoles) {
-            if (authService.getCurrentUser() === null) {
+            if (!authService.getCurrentUser()) {
                 $state.go('login');
             } else if (!authService.hasRoles(toState.data.requiredRoles)) {
                 $log.debug('User does not have required roles to enter this state');

@@ -16,8 +16,8 @@ buildscript {
 }
 
 plugins {
-    id "io.spring.dependency-management" version "0.5.1.RELEASE"
-    id "com.moowork.node" version "0.10"
+    id 'io.spring.dependency-management' version '0.5.1.RELEASE'
+    id 'com.craigburke.bower-installer' version '2.2.0'
 }
 
 version "0.1"
@@ -30,7 +30,6 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: "org.grails.grails-web"
 apply plugin: "org.grails.grails-gsp"
-apply plugin: 'com.moowork.node'
 
 ext {
     grailsVersion = project.grailsVersion
@@ -38,18 +37,6 @@ ext {
     jasmineDependencies = ['karma', 'karma-jasmine@2_0', 'karma-phantomjs-launcher', 'phantomjs']
     karmaExec = file('node_modules/karma/bin/karma')
     karmaConfig = file('grails-app/conf/karma.conf.js')
-    bowerInstallerExec = file('node_modules/bower-installer/bower-installer')
-    bowerExec = file('node_modules/bower-installer/node_modules/bower/bin/bower')
-    assetLibsDir = file('grails-app/assets/libs/bower')
-}
-
-assets {
-    minifyJs = true
-    minifyCss = true
-    configOptions = [
-            angular: [moduleNameBase: 'five15']
-    ]
-    excludes = ['**/*.spec.js']
 }
 
 node {
@@ -59,15 +46,13 @@ node {
     download = true
 }
 
-task installBowerInstaller(type: NpmTask) {
-    args = ['install', 'bower-installer', '--silent']
-    outputs.dir 'node_modules/bower-installer'
-}
-
-task installAssetLibs(type: NodeTask, dependsOn: installBowerInstaller) {
-    script = bowerInstallerExec
-    inputs.file 'bower.json'
-    outputs.dir assetLibsDir
+assets {
+    minifyJs = true
+    minifyCss = true
+    configOptions = [
+        angular: [moduleNameBase: 'five15']
+    ]
+    excludes = ['**/*.spec.js']
 }
 
 task installJasmine(type: NpmTask) {
@@ -85,15 +70,8 @@ task jasmineWatch(type: NodeTask, dependsOn: installJasmine) {
     args = ['start', karmaConfig.absolutePath]
 }
 
-task cleanBowerCache(type: NodeTask, dependsOn: installBowerInstaller) {
-    script = bowerExec
-    args = ['cache', 'clean']
-}
-
 clean {
     delete 'node_modules'
-    delete 'bower_components'
-    delete assetLibsDir
 }
 
 repositories {
@@ -106,6 +84,25 @@ dependencyManagement {
         mavenBom "org.grails:grails-bom:$grailsVersion"
     }
     applyMavenExclusions false
+}
+
+bower {
+    installBase = 'grails-app/assets/bower'
+    
+    dependencies {
+        'angular'('1.3.x')
+        'angular-animate'('1.3.x')
+        'angular-mocks'('1.3.x')
+        'ui-router'('0.2.x')
+        'animate.css'('3.3.x')
+        'angular-base64'('2.0.x')
+        'angular-bootstrap'('0.13.x')
+        'bootstrap'('3.3.x') {
+            source 'dist/css/*.min.css' >> 'css'
+            source 'dist/fonts/**' >> 'fonts'
+            excludes 'jquery'
+        }
+    }
 }
 
 dependencies {
@@ -140,7 +137,7 @@ task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
 
-run.dependsOn installAssetLibs
-assetCompile.dependsOn installAssetLibs
+run.dependsOn bowerInstall
+assetCompile.dependsOn bowerInstall
 
 test.dependsOn jasmineRun

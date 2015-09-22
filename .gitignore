@@ -7,3 +7,4 @@ node_modules
 bower.json
 bower_components
 grails-app/assets/bower
+.asscache

@@ -14,7 +14,7 @@ buildscript {
 plugins {
     id 'io.spring.dependency-management' version '0.5.1.RELEASE'
     id 'com.bertramlabs.asset-pipeline' version '2.5.0'
-    id 'com.craigburke.bower-installer' version '2.1.1'
+    id 'com.craigburke.bower-installer' version '2.4.1'
     id 'com.craigburke.jasmine' version '1.1.3'
 }
 
@@ -60,21 +60,17 @@ dependencyManagement {
 }
 
 bower {
-    installBase = 'grails-app/assets/bower'
-    
-    dependencies {
-        'angular'('1.3.x')
-        'angular-animate'('1.3.x')
-        'angular-mocks'('1.3.x')
-        'ui-router'('0.2.x')
-        'animate.css'('3.3.x')
-        'angular-base64'('2.0.x')
-        'angular-bootstrap'('0.13.x')
-        'bootstrap'('3.3.x') {
-            source 'dist/css/*.min.css' >> 'css'
-            source 'dist/fonts/**' >> 'fonts'
-            excludes 'jquery'
-        }
+    'angular'('1.3.x')
+    'angular-animate'('1.3.x')
+    'angular-mocks'('1.3.x')
+    'ui-router'('0.2.x')
+    'animate.css'('3.3.x')
+    'angular-base64'('2.0.x')
+    'angular-bootstrap'('0.13.x')
+    'bootstrap'('3.3.x') {
+        source 'dist/css/*.min.css' >> 'css/'
+        source 'dist/fonts/**' >> 'fonts/'
+        excludes 'jquery'
     }
 }
 
@@ -102,7 +98,7 @@ dependencies {
     compile 'org.hibernate:hibernate-ehcache'
 
     runtime 'org.grails.plugins:asset-pipeline:3.0.7'
-	
+
     assets 'com.craigburke.angular:angular-template-asset-pipeline:2.2.0'
     assets 'com.craigburke.angular:angular-annotate-asset-pipeline:2.2.0'
     assets 'com.craigburke:js-closure-wrap-asset-pipeline:1.1.0'
@@ -122,5 +118,4 @@ task wrapper(type: Wrapper) {
     gradleVersion = gradleWrapperVersion
 }
 
-[run, bootRun, assetCompile]*.dependsOn bowerInstall
 test.dependsOn jasmineRun

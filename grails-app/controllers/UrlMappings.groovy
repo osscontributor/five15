@@ -26,7 +26,7 @@ class UrlMappings {
         "/projects(.$format)"(controller: 'project', action: 'projects')
 
         "/"(view:"/index")
-        "500"(view:'/error')
-        "404"(view:'/notFound')
+        "500"(view: '/application/serverError')
+        "404"(view: '/application/notFound')
     }
 }

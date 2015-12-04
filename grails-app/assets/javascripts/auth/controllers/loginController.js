@@ -1,10 +1,10 @@
 //= wrapped
-'use strict';
 
-angular.module('five15.auth')
-    .controller('LoginController', LoginController);
+angular
+    .module("auth")
+    .controller("LoginController", LoginController);
 
-function LoginController($state, authService) {
+function LoginController($state, authFactory) {
     var vm = this;
 
     function goToReport() {
@@ -16,10 +16,10 @@ function LoginController($state, authService) {
     }
 
     vm.doLogin = function() {
-        authService.login(vm.login, vm.password)
+        authFactory.login(vm.login, vm.password)
             .then(goToReport, badLogin);
-    }
-    
+    };
+
     vm.clearError = function() {
         vm.error = '';
     }

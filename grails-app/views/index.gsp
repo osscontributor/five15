@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="five15" class="no-js">
+<html lang="en" ng-app="core" class="no-js">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +13,7 @@
 <div ui-view class="container">
     Loading...
 </div>
-<asset:javascript src="application.js"/>
+<asset:javascript src="core/core.js"/>
 
 </body>
 </html>

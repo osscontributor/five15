@@ -1,15 +1,15 @@
 //= wrapped
-'use strict';
 
-angular.module('five15.report')
-    .factory('reportService', reportServiceFactory);
+angular
+    .module("report")
+    .factory("reportFactory", reportFactory);
 
-function reportServiceFactory ($q) {
-    
+function reportFactory($q) {
+
     var reportService = {
         getLatestForUser: getLatestForUser
     };
-    
+
     var stubbedReport = {
         projectId: 1234,
         weekEnding: '1955-11-05',
@@ -25,7 +25,7 @@ function reportServiceFactory ($q) {
             'the thing that was great wasn\'t actually all that great.'
         ]
     };
-    
+
 
     function getLatestForUser(userId) {
         return $q.when(stubbedReport);

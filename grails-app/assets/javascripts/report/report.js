@@ -1,11 +1,18 @@
 //= wrapped
-'use strict';
+//= require /angular/angular
+//= require /auth/auth
+//= require_self
+//= require_tree services
+//= require_tree controllers
+//= require_tree directives
+//= require_tree domain
+//= require_tree templates
 
-angular
-    .module('five15.report')
-    .config(configureRoutes);
+angular.module("report", ["auth"])
+    .config(reportConfig);
 
-function configureRoutes($stateProvider, roles) {
+
+function reportConfig($stateProvider, roles) {
     $stateProvider
         .state('report', {
             url: '/report',
@@ -18,3 +25,5 @@ function configureRoutes($stateProvider, roles) {
             resolve: ReportController.resolve
         });
 }
+
+

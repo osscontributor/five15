@@ -100,6 +100,19 @@ bower {
     'angular-mocks'('1.4.x') {
         source 'angular-mocks.js' >> '/angular/'
     }
+    'angular-animate'('1.4.x') {
+        source 'angular-animate.js' >> '/angular/'
+    }
+
+    'ui-router'('0.2.x')
+    'animate.css'('3.3.x')
+    'angular-base64'('2.0.x')
+    'angular-bootstrap'('0.13.x')
+    'bootstrap'('3.3.x') {
+        source 'dist/css/*.min.css' >> 'css/'
+        source 'dist/fonts/**' >> 'fonts/'
+        excludes 'jquery'
+    }
 }
 
 karma {

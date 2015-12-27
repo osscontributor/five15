@@ -8,11 +8,11 @@ function LoginController($state, authFactory) {
     var vm = this;
 
     function goToReport() {
-        $state.go('report');
+        $state.go("report");
     }
 
     function badLogin() {
-        vm.error = 'Invalid credentials';
+        vm.error = "Invalid credentials";
     }
 
     vm.doLogin = function() {
@@ -21,6 +21,6 @@ function LoginController($state, authFactory) {
     };
 
     vm.clearError = function() {
-        vm.error = '';
-    }
+        vm.error = "";
+    };
 }

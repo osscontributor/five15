@@ -8,21 +8,21 @@
 //= require_tree domain
 //= require_tree templates
 
-angular.module('auth', ['base64'])
+angular.module("auth", ["base64"])
     .config(authModuleConfig)
     .run(initializeStateChangeListener);
 
 function authModuleConfig($httpProvider, $urlRouterProvider, $stateProvider) {
-    $httpProvider.interceptors.push('basicAuthInterceptorFactory');
+    $httpProvider.interceptors.push("basicAuthInterceptorFactory");
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise("/login");
 
     $stateProvider
-        .state('login', {
-            url: '/login',
-            controller: 'LoginController',
-            controllerAs: 'vm',
-            templateUrl: '/auth/login.htm'
+        .state("login", {
+            url: "/login",
+            controller: "LoginController",
+            controllerAs: "vm",
+            templateUrl: "/auth/login.htm"
         });
 }
 

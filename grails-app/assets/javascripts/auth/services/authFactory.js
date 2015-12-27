@@ -14,18 +14,18 @@ function authFactory($http, $q) {
         hasRoles: hasRoles
     };
 
-    var LOGIN_URL = '/profiles';
+    var LOGIN_URL = "/profiles";
     var _user = null;
     var _credentials = null;
 
-    function login(login, password) {
+    function login(userLogin, password) {
 
         _credentials = {
-            login: login,
+            login: userLogin,
             password: password
         };
 
-        return $http.get(LOGIN_URL + '/' + login + '.json').then(function loginResult(result) {
+        return $http.get(LOGIN_URL + "/" + login + ".json").then(function loginResult(result) {
             _user = result.data;
             return _user;
         }, function loginError(error){

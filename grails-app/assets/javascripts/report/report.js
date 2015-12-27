@@ -18,11 +18,11 @@ function resolveUserProjects (projectFactory, authFactory) {
     
 function reportConfig($stateProvider, roles) {
     $stateProvider
-        .state('report', {
-            url: '/report',
-            controller: 'ReportController',
-            controllerAs: 'vm',
-            templateUrl: '/report/report.htm',
+        .state("report", {
+            url: "/report",
+            controller: "ReportController",
+            controllerAs: "vm",
+            templateUrl: "/report/report.htm",
             data: {
                 requiredRoles: [roles.USER]
             },

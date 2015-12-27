@@ -5,7 +5,7 @@ angular
     .factory("projectFactory", projectFactory);
 
 function projectFactory($http, $log) {
-    var projectFactory = {};
+    var projectService = {};
 
     projectFactory.retrieveForUser = function(userId) {
         function extractData (result) {
@@ -17,9 +17,9 @@ function projectFactory($http, $log) {
             return [];
         }
 
-        return $http.get('/projects.json?userId=' + userId).then(extractData, noProjects);
+        return $http.get("/projects.json?userId=" + userId).then(extractData, noProjects);
     };
 
-    return projectFactory;
+    return projectService;
 
 }

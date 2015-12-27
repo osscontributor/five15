@@ -3,7 +3,7 @@
 angular
     .module("auth")
     .constant("roles", {
-        ADMIN: 'ADMIN',
-        MANAGER: 'MANAGER',
-        USER: 'USER'
+        ADMIN: "ADMIN",
+        MANAGER: "MANAGER",
+        USER: "USER"
     });

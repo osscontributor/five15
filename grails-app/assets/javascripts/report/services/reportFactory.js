@@ -12,17 +12,17 @@ function reportFactory($q) {
 
     var stubbedReport = {
         projectId: 1234,
-        weekEnding: '1955-11-05',
-        projectName: 'Some Project',
+        weekEnding: "1955-11-05",
+        projectName: "Some Project",
         thisWeek: [
-            'did something great',
-            'did something average'
+            "did something great",
+            "did something average"
         ],
         nextWeek: [
-            'will do something else average'
+            "will do something else average"
         ],
         issues: [
-            'the thing that was great wasn\'t actually all that great.'
+            "the thing that was great wasn\"t actually all that great."
         ]
     };
 

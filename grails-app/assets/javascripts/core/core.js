@@ -12,4 +12,4 @@
 //= require_tree domain
 //= require_tree templates
 
-angular.module("core", ['ui.router', 'auth', 'report', 'ui.bootstrap', 'ngAnimate']);
+angular.module("core", ["ui.router", "auth", "report", "ui.bootstrap", "ngAnimate"]);

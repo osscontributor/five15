@@ -11,7 +11,11 @@
 angular.module("report", ["auth"])
     .config(reportConfig);
 
-
+function resolveUserProjects (projectFactory, authFactory) {
+    var userId = authFactory.getCurrentUser().id;
+    return projectFactory.retrieveForUser(userId);
+}
+    
 function reportConfig($stateProvider, roles) {
     $stateProvider
         .state('report', {
@@ -22,7 +26,9 @@ function reportConfig($stateProvider, roles) {
             data: {
                 requiredRoles: [roles.USER]
             },
-            resolve: ReportController.resolve
+            resolve: {
+                userProjects: resolveUserProjects
+            }
         });
 }
 

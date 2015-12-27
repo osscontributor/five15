@@ -1,7 +1,7 @@
 //= wrapped
 
 angular
-    .module("core")
+    .module("auth")
     .constant("roles", {
         ADMIN: 'ADMIN',
         MANAGER: 'MANAGER',

@@ -10,10 +10,9 @@ buildscript {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
         classpath "org.grails.plugins:views-gradle:1.0.0.RC2"
         classpath "org.grails.plugins:hibernate4:5.0.0.RC2"
-        classpath "com.craigburke.angular:angular-template-asset-pipeline:2.2.6"
         classpath "com.bertramlabs.plugins:asset-pipeline-gradle:2.6.4"
-        classpath "gradle.plugin.com.craigburke.gradle:karma-gradle:1.2.1"
-        classpath "gradle.plugin.com.craigburke.gradle:bower-installer-gradle:2.4.1"
+        classpath "gradle.plugin.com.craigburke.gradle:karma-gradle:1.4.0"
+        classpath "gradle.plugin.com.craigburke.gradle:bower-installer-gradle:2.5.1"
     }
 }
 
@@ -70,7 +69,7 @@ dependencies {
     testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails.plugins:geb"
     compile "org.grails:grails-plugin-gsp"
-    compile "com.craigburke.angular:angular-template-asset-pipeline:2.2.6"
+    assets "com.craigburke.angular:angular-template-asset-pipeline:2.2.6"
     assets "com.craigburke.angular:angular-annotate-asset-pipeline:2.4.0"
     assets "com.craigburke:js-closure-wrap-asset-pipeline:1.2.0"
     runtime "org.grails.plugins:asset-pipeline"
@@ -116,19 +115,5 @@ bower {
 }
 
 karma {
-    profile('default')  {
-        libraryBases = ['grails-app/assets/bower/']
-        libraryFiles = ['angular/angular.js', '**/*.js']
-
-        sourceBases = ['grails-app/assets/javascripts/']
-        //To ensure the modules get loaded first
-        sourceFiles = ['**/!(controllers|directives|services|domain)/*.js', '**/*.js']
-
-        testBases = ['src/test/assets/']
-        testFiles = ['**/*Spec.js']
-    }
-
-    browsers = ['PhantomJS']
-    frameworks = ['jasmine']
-    reporters = ['progress']
+    profile 'angularJS'
 }

@@ -1,7 +1,7 @@
 //= wrapped
 
 angular
-    .module("report")
+    .module("five15.report")
     .controller("ReportController", ReportController);
 
 function ReportController(authFactory, userProjects) {

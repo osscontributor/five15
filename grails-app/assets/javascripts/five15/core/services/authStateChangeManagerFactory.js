@@ -1,7 +1,7 @@
 //= wrapped
 
 angular
-    .module("auth")
+    .module("five15.core")
     .factory("authStateChangeManagerFactory", authStateChangeManagerFactory);
 
 function authStateChangeManagerFactory($rootScope, authFactory, $log, $state) {

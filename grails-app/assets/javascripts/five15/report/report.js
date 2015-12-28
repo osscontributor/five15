@@ -8,7 +8,7 @@
 //= require_tree domain
 //= require_tree templates
 
-angular.module("report", ["auth"])
+angular.module("five15.report", ["five15.core"])
     .config(reportConfig);
 
 function resolveUserProjects (projectFactory, authFactory) {
@@ -22,7 +22,7 @@ function reportConfig($stateProvider, roles) {
             url: "/report",
             controller: "ReportController",
             controllerAs: "vm",
-            templateUrl: "/report/report.htm",
+            templateUrl: "/five15/report/report.htm",
             data: {
                 requiredRoles: [roles.USER]
             },

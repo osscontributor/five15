@@ -1,7 +1,7 @@
 //= wrapped
 
 angular
-    .module("auth")
+    .module("five15.core")
     .factory("authFactory", authFactory);
 
 function authFactory($http, $q) {

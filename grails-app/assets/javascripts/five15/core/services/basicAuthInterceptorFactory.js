@@ -1,7 +1,7 @@
 //= wrapped
 
 angular
-    .module("auth")
+    .module("five15.core")
     .factory("basicAuthInterceptorFactory", basicAuthInterceptorFactory);
 
 function basicAuthInterceptorFactory($base64, $injector) {

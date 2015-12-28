@@ -1,7 +1,7 @@
 //= wrapped
 
 angular
-    .module("report")
+    .module("five15.report")
     .factory("reportFactory", reportFactory);
 
 function reportFactory($q) {

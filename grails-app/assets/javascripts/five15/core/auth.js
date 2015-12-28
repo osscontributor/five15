@@ -1,14 +1,6 @@
 //= wrapped
-//= require /angular/angular
-//= require /angular-base64/angular-base64
-//= require_self
-//= require_tree services
-//= require_tree controllers
-//= require_tree directives
-//= require_tree domain
-//= require_tree templates
 
-angular.module("auth", ["base64"])
+angular.module("five15.core")
     .config(authModuleConfig)
     .run(initializeStateChangeListener);
 
@@ -22,7 +14,7 @@ function authModuleConfig($httpProvider, $urlRouterProvider, $stateProvider) {
             url: "/login",
             controller: "LoginController",
             controllerAs: "vm",
-            templateUrl: "/auth/login.htm"
+            templateUrl: "/five15/core/login.htm"
         });
 }
 

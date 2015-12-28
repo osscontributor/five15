@@ -1,7 +1,7 @@
 //= wrapped
 
 angular
-    .module("auth")
+    .module("five15.core")
     .controller("LoginController", LoginController);
 
 function LoginController($state, authFactory) {

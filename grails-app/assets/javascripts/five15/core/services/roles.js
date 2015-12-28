@@ -1,7 +1,7 @@
 //= wrapped
 
 angular
-    .module("auth")
+    .module("five15.core")
     .constant("roles", {
         ADMIN: "ADMIN",
         MANAGER: "MANAGER",

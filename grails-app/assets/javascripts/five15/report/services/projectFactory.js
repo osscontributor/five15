@@ -1,7 +1,7 @@
 //= wrapped
 
 angular
-    .module("report")
+    .module("five15.report")
     .factory("projectFactory", projectFactory);
 
 function projectFactory($http, $log) {

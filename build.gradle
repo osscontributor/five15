@@ -83,9 +83,6 @@ task wrapper(type: Wrapper) {
 assets {
     minifyJs = true
     minifyCss = true
-    configOptions = [
-            angular: [moduleNameBase: 'five15']
-    ]
     excludes = ['**/*.spec.js']
 }
 
